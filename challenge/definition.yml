@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: hacker-company
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: frontend
+  namespace: hacker-company
+spec:
+  containers:
+    - name: nginx
+      image: nginx:latest
+      livenessProbe:
+        exec:
+          command:
+            - nginx
+            - -t

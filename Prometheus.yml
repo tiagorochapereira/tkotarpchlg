@@ -1,0 +1,14 @@
+# Create persistent volume for your data
+docker volume create prometheus-data
+# Start Prometheus container
+docker run \
+    -p 9090:9090 \
+    -v /opt/prometheus/etc/prometheus.yml:/etc/prometheus/prometheus.yml \
+    -v prometheus-data:/prometheus \
+    prom/prometheus \
+	&
+
+# http://172.31.23.221:9090
+
+# sudo firewall-cmd --add-port=9090/tcp
+# firewall-cmd --reload
